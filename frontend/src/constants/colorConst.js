@@ -1,0 +1,3 @@
+export const COLOR_GREYISH_BLACK = "#393E46";
+export const COLOR_GREYISH_BLACK_HOVER = "#1f2226";
+export const COLOR_BLUEISH_DARK_FOOTER = "#200E3A";
