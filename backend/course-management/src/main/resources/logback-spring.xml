@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<include
+		resource="org/springframework/boot/logging/logback/base.xml" />
+
+	<appender name="FILE"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>logs/course-app-log.log</file> <!-- Set the desired log file name and location -->
+		<encoder>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} -
+				%msg%n</pattern>
+		</encoder>
+		<rollingPolicy
+			class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<fileNamePattern>logs/course-app-log-%d{yyyy-MM-dd}.%i.log
+			</fileNamePattern>
+			<maxFileSize>10MB</maxFileSize> <!-- Set the maximum size of each log file -->
+			<maxHistory>3</maxHistory> <!-- Set the maximum number of archived log files -->
+		</rollingPolicy>
+	</appender>
+
+	<root level="DEBUG"> <!-- Set the desired root logging level -->
+		<appender-ref ref="CONSOLE" />
+		<appender-ref ref="FILE" />
+	</root>
+</configuration>

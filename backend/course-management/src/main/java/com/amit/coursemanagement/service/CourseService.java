@@ -1,29 +1,51 @@
 package com.amit.coursemanagement.service;
 
 import java.util.List;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import com.amit.coursemanagement.dto.CourseDto;
 import com.amit.coursemanagement.entity.Course;
 import com.amit.coursemanagement.repository.CourseRepository;
 
 @Service
 public class CourseService {
 
-	@Autowired
-	CourseRepository courseRepository;
+	private final CourseRepository courseRepository;
 
-	public List<Course> getAllCourses() {
-		List<Course> courses = courseRepository.findAll();
-		return courses;
+	private final ModelMapper modelMapper;
+
+	public CourseService(CourseRepository courseRepository, ModelMapper modelMapper) {
+		this.courseRepository = courseRepository;
+		this.modelMapper = modelMapper;
 	}
 
-	public void addCourses(List<Course> courses) throws Exception {
+	public List<CourseDto> getAllCourses() {
+		List<Course> courses = courseRepository.findAll();
+		return StreamSupport.stream(courses.spliterator(), false).map(convertCourseModelToDto())
+				.collect(Collectors.toList());
+	}
+
+	public void addCourses(List<CourseDto> courseDtos) throws Exception {
+		List<Course> courses = StreamSupport.stream(courseDtos.spliterator(), false)
+				.map(convertCourseDtoToCourseModel(courseDtos)).collect(Collectors.toList());
 		courseRepository.saveAll(courses);
 	}
 
-	public void addCourse(Course courses) throws Exception {
-		courseRepository.save(courses);
+	public void addCourse(CourseDto courseDto) throws Exception {
+		Course course = modelMapper.map(courseDto, Course.class);
+		courseRepository.save(course);
+	}
+
+	private Function<? super Course, ? extends CourseDto> convertCourseModelToDto() {
+		return course -> modelMapper.map(course, CourseDto.class);
+	}
+
+	private Function<? super CourseDto, ? extends Course> convertCourseDtoToCourseModel(List<CourseDto> courseDtos) {
+		return course -> modelMapper.map(courseDtos, Course.class);
 	}
 }

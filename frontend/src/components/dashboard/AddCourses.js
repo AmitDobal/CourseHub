@@ -3,23 +3,21 @@ import {
   Button,
   Container,
   Grid,
-  InputAdornment,
   TextField,
   Typography,
 } from "@mui/material";
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
-import LockIcon from "@mui/icons-material/Lock";
 import { COLOR_GREYISH_BLACK } from "../../constants/colorConst";
 import axios from "axios";
+import { COURSES_END_POINT } from "../../constants/Links";
+import baseUrl from "../../config";
 
 const formInitialState = {
   name: "",
   description: "",
   image: "",
   price: "",
-  instructor:""
+  instructor: "",
 };
 const AddCourses = () => {
   const maxLength = 80;
@@ -42,10 +40,10 @@ const AddCourses = () => {
 
   const addDataToDb = async () => {
     try {
-      const url = "http://localhost:8080/course";
+      const url = `${baseUrl + COURSES_END_POINT}`;
       const body = formInputs;
       const res = await axios.post(url, body);
-      console.log(res)
+      console.log(res);
     } catch (error) {
       console.log("ERRROR! POST ADD COURSE: ", error.message);
     }

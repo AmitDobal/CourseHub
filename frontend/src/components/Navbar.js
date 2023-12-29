@@ -57,7 +57,6 @@ const Nav = () => {
 
   const handlePagesButton = (e) => {
     navigate(`/${e.target.name}`);
-    console.log(e.target.name);
   };
 
   const handleLoginRegisterButtonClick = (e) => {

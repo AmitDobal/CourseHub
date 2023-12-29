@@ -8,11 +8,21 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookIcon from "@mui/icons-material/Facebook";
 const Footer = () => {
   return (
-    <footer>
-      <Box component='footer' p={2} textAlign="center"
-        position="static" bgcolor="primary.main" color="white"
+    <Box >
+      <Box
+        component="footer"
+        mt={10}
+        p={2}
+        display={"flex"}
+        textAlign="center"
+        position="relative"
+        bottom="0"
+        left="0"
+        // width='100%'
+        bgcolor="primary.main"
+        color="white"
         sx={{ background: COLOR_GREYISH_BLACK, height: 50 }}>
-        <Box display={"flex"} justifyContent={"space-between"}>
+        <Box flexGrow={1} display={"flex"} justifyContent={"space-between"}>
           <Box>
             <Typography>Cours0</Typography>
           </Box>
@@ -21,7 +31,7 @@ const Footer = () => {
           </Box>
         </Box>
       </Box>
-    </footer>
+    </Box>
   );
 };
 
