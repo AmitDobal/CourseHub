@@ -19,7 +19,7 @@ import SelfImprovementIcon from "@mui/icons-material/SelfImprovement";
 import MenuIcon from "@mui/icons-material/Menu";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { Link, useNavigate } from "react-router-dom";
-import { COLOR_GREYISH_BLACK } from "../constants/colorConst";
+import { COLOR_GREYISH_BLACK } from "../../constants/colorConst";
 
 const pages = ["Courses", "Pricing"];
 const settings = [
@@ -47,7 +47,7 @@ const Nav = () => {
 
   const handleCloseNavMenu = (page) => {
     setAnchorElNav(null);
-    navigate(`/${page}`)
+    navigate(`/${page}`);
   };
 
   const handleCloseUserMenu = (setting) => {
@@ -60,7 +60,7 @@ const Nav = () => {
   };
 
   const handleLoginRegisterButtonClick = (e) => {
-    navigate(`/${e.currentTarget.name}`)
+    navigate(`/${e.currentTarget.name}`);
   };
 
   const StyledLink = styled(Link)`
@@ -86,7 +86,6 @@ const Nav = () => {
             <Typography
               variant="h6"
               noWrap
-              component="a"
               // href="/"
               sx={{
                 mr: 2,

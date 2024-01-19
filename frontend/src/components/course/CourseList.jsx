@@ -1,11 +1,13 @@
 import { Box, Container, Grid } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import CourseCard from "./CourseCard";
-import axios from "axios";
 import { COURSES_END_POINT } from "../../constants/Links";
 import { PacmanLoader } from "react-spinners";
 import { COLOR_GREYISH_BLACK } from "../../constants/colorConst";
 import baseUrl from "../../config";
+import axios from "axios";
+// const axios = require("axios");
+
 
 const CourseList = () => {
   const [courses, setCourses] = useState([]);

@@ -1,19 +1,18 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import "./App.css";
-import Home from "./pages/Home";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
-import Navbar from "./components/Navbar";
-import Error from "./pages/Error";
-import Courses from "./pages/Courses";
-import Footer from "./components/Footer";
+import Home from "../pages/Home";
+import Login from "../pages/Login";
+import Register from "../pages/Register";
+import Navbar from "./navbar/Navbar";
+import Error from "../pages/Error";
+import Courses from "../pages/Courses";
+import Footer from "./footer/Footer";
 import { Box } from "@mui/material";
-import Dashboard from "./pages/Dashboard";
+import Dashboard from "../pages/Dashboard";
 
 function App() {
   return (
     <BrowserRouter>
-      <Navbar />
+      {/* <Navbar /> */}
       <Box
         minHeight="90vh" // Make the container at least the height of the viewport
         display="flex"

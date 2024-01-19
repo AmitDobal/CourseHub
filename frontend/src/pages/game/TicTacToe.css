@@ -1,0 +1,147 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  overflow: hidden; /* Prevents scrollbars */
+}
+
+.tic-tac-toe {
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+
+.cloud {
+  position: absolute;
+  background-color: #ffffff;
+  border-radius: 50%;
+  opacity: 0.7;
+  animation: moveClouds linear infinite;
+}
+
+
+
+@keyframes moveClouds {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes flyBirds {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+  50% {
+    transform: translateX(50px) translateY(-20px);
+  }
+  100% {
+    transform: translateX(0) translateY(0);
+  }
+}
+
+/* Add clouds and birds to your Tic Tac Toe container */
+.cloud1 {
+  width: 100px;
+  height: 50px;
+  top: 20px;
+  left: 20px;
+}
+
+.cloud2 {
+  width: 80px;
+  height: 40px;
+  top: 80px;
+  right: 40px;
+}
+
+
+
+.square {
+  font-size: 2em;
+  width: 60px;
+  height: 60px;
+  margin: 5px;
+  padding: 10px;
+  text-align: center;
+  background-color: #4caf50;
+  color: white;
+  border: 1px solid #ddd;
+  cursor: pointer;
+}
+
+.square.winner {
+  background-color: #ffeb3b;
+  color: #000;
+}
+
+.square:hover {
+  background-color: #45a049;
+}
+
+.status {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.reset-button {
+  font-size: 1em;
+  background-color: #2196f3;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+  border: none;
+  margin-top: 10px;
+}
+
+.reset-button:hover {
+  background-color: #0b7dda;
+}
+.bird {
+  position: absolute;
+  font-size: 20px;
+  color: #333;
+}
+
+.bird1 {
+  top: 50px;
+  left: 50px;
+  animation: flyBird1 linear infinite;
+}
+
+.bird2 {
+  top: 120px;
+  right: 80px;
+  animation: flyBird2 linear infinite;
+}
+
+@keyframes flyBird1 {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+  50% {
+    transform: translateX(50px) translateY(-20px);
+  }
+  100% {
+    transform: translateX(0) translateY(0);
+  }
+}
+
+@keyframes flyBird2 {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+  50% {
+    transform: translateX(-50px) translateY(-20px);
+  }
+  100% {
+    transform: translateX(0) translateY(0);
+  }
+}

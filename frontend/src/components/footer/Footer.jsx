@@ -3,7 +3,7 @@ import React from "react";
 import {
   COLOR_BLUEISH_DARK_FOOTER,
   COLOR_GREYISH_BLACK,
-} from "../constants/colorConst";
+} from "../../constants/colorConst";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookIcon from "@mui/icons-material/Facebook";
 const Footer = () => {
