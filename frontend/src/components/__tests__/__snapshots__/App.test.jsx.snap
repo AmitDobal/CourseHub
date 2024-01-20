@@ -32,19 +32,23 @@ exports[`App component should render app with error 1`] = `
           class="MuiBox-root css-1afphko"
         >
           <div
-            class="MuiBox-root css-0"
+            class="MuiBox-root css-ksvmh9"
           >
-            <div>
+            <div
+              class="MuiBox-root css-1carym4"
+            >
               <div
-                class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1ps6pg7-MuiPaper-root"
+                class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-thsn50-MuiPaper-root"
               >
                 Course filter
               </div>
             </div>
             <div
-              class="MuiBox-root css-0"
+              class="MuiBox-root css-1x97c6v"
             >
-              Here will display all Courses.
+              <div
+                class="MuiBox-root css-1mf0mzh"
+              />
             </div>
           </div>
         </div>

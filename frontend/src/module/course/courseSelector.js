@@ -1,0 +1,1 @@
+export const getCoursesSelector = (rootReducer) => rootReducer.courseReducer.courses;

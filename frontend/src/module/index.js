@@ -1,5 +1,6 @@
 import { combineReducers } from "redux";
+import { courseReducer } from "./course/courseReducer.js";
 
 export default combineReducers({
-  courseReducers: () => [1, 2, 3, 4],
+  courseReducer,
 });

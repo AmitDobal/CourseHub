@@ -17,4 +17,13 @@ export const useStyles = {
   courseList: {
     width: "80%",
   },
+  courseListItemPaper: {
+    padding: "10px",
+    display: "flex",
+    width: "80%",
+  },
+  courseImage: {
+    width: "180px",
+    height: "200px",
+  },
 };

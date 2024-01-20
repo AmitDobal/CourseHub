@@ -1,0 +1,1 @@
+export const COURSE_LIST_ACTION_TYPE = "COURSELIST"
