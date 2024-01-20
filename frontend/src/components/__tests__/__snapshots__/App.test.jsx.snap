@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`App component should render app with error 1`] = `
+exports[`App component should render app without error 1`] = `
 <DocumentFragment>
   <div
     class="MuiBox-root css-16ci0ji"
@@ -46,6 +46,15 @@ exports[`App component should render app with error 1`] = `
             <div
               class="MuiBox-root css-1x97c6v"
             >
+              <div
+                class="MuiBox-root css-19t1w01"
+              >
+                <span
+                  class="MuiSkeleton-root MuiSkeleton-rectangular MuiSkeleton-pulse css-153n0d3-MuiSkeleton-root"
+                  data-testid="course-loader"
+                  style="width: 80%; height: 200px;"
+                />
+              </div>
               <div
                 class="MuiBox-root css-1mf0mzh"
               />

@@ -12,6 +12,7 @@ describe("courseReducer", () => {
           description: "des",
         },
       ],
+     
     };
 
     const newState = courseReducer(INITIAL_COURSE_REDUCER_STATE, action);
@@ -24,6 +25,11 @@ describe("courseReducer", () => {
           description: "des",
         },
       ],
+      promise: {
+        isPending: false,
+        isFullFilled: false,
+        isErrorOcurred: false,
+      },
     });
   });
 });

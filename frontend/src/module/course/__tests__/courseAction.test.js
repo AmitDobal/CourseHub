@@ -25,8 +25,8 @@ describe("CourseActions", () => {
     );
     await store.dispatch(getCourseAction());
     const actions = store.getActions();
-    expect(actions.length).toEqual(1);
-    expect(actions[0]).toEqual({
+    expect(actions.length).toEqual(3);
+    expect(actions[1]).toEqual({
       type: COURSE_LIST_ACTION_TYPE,
       payload: [
         {
