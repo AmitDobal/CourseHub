@@ -48,4 +48,9 @@ public class CourseService {
 	private Function<? super CourseDto, ? extends Course> convertCourseDtoToCourseModel(List<CourseDto> courseDtos) {
 		return course -> modelMapper.map(courseDtos, Course.class);
 	}
+
+	public List<CourseDto> getCoursesByName(String string) {
+		List<Course> courses = courseRepository.findCourseByNameIgnoreCase(string);
+		return courses.stream().map(convertCourseModelToDto()).collect(Collectors.toList());
+	}
 }

@@ -23,14 +23,28 @@ public class CourseRepositoryTest {
 	void shouldAbleToFetchAllBooksInDB() {
 		Iterable<Course> all = courseRepository.findAll();
 		Long totalCourseCount = StreamSupport.stream(all.spliterator(), false).count();
-		Assertions.assertEquals(totalCourseCount, 2);
+		Assertions.assertEquals(2, totalCourseCount);
 	}
 	
 	@Test
 	@Sql(scripts = { "classpath:InsertInitialCourseRecordForTest.sql" })
-	void shouldReturnOneBookForWhenInstructorIsTestInstructor() {
+	void shouldReturnOneCourseForWhenInstructorIsTestInstructor() {
 		List<Course> test_instructor = courseRepository.findCourseByInstructor("Test Instructor");
 		Long count = StreamSupport.stream(test_instructor.spliterator(), false).count();
-		Assertions.assertEquals(count, 1);
+		Assertions.assertEquals(1, count);
+	}
+	@Test
+	@Sql(scripts = { "classpath:InsertInitialCourseRecordForTest.sql" })
+	void shouldReturnOneCourseForWhenNameIsTest() {
+		List<Course> test_instructor = courseRepository.findCourseByName("React Fundamentals");
+		Long count = StreamSupport.stream(test_instructor.spliterator(), false).count();
+		Assertions.assertEquals(1, count);
+	}
+	@Test
+	@Sql(scripts = { "classpath:InsertInitialCourseRecordForTest.sql" })
+	void shouldReturnOneCourseForWhenNameIsTestIgnoreCase() {
+		List<Course> test_instructor = courseRepository.findCourseByNameIgnoreCase("ReACt FuNdamEnTals");
+		Long count = StreamSupport.stream(test_instructor.spliterator(), false).count();
+		Assertions.assertEquals(1, count);
 	}
 }

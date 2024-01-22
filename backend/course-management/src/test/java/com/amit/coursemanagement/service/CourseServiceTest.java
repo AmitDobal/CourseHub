@@ -2,11 +2,14 @@ package com.amit.coursemanagement.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.fail;
-import static org.mockito.Mockito.verify;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import static org.mockito.Mockito.*;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -45,6 +48,20 @@ public class CourseServiceTest {
 				.hasFieldOrPropertyWithValue("description", "Learn Java fundamentals")
 				.hasFieldOrPropertyWithValue("instructor", "John Doe").hasFieldOrPropertyWithValue("ratings", 4.5)
 				.hasFieldOrPropertyWithValue("price", 49.99);
+	}
+
+	@Test
+	void shouldReturnNameByCourseNameIgnoreCase() {
+		List<Course> courses = new ArrayList<>();
+		Course course = getDummyCourse();
+		courses.add(course);
+		CourseDto courseDto = getDummyCourseDto();
+
+		when(courseRepository.findCourseByNameIgnoreCase(anyString())).thenReturn(courses);
+		when(mapper.map(course, CourseDto.class)).thenReturn(courseDto);
+
+		List<CourseDto> courseDtoList = courseService.getCoursesByName("Java Basics");
+		assertThat(courseDtoList.size()).isEqualTo(1);
 	}
 
 	@Test

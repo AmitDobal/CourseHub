@@ -11,4 +11,6 @@ import com.amit.coursemanagement.entity.Course;
 public interface CourseRepository extends JpaRepository<Course, Integer> {
 
 	public List<Course> findCourseByInstructor(String instructor);
+	public List<Course> findCourseByName(String instructor);
+	public List<Course> findCourseByNameIgnoreCase(String instructor);
 }

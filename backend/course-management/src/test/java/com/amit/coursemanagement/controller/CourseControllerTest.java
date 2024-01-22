@@ -2,10 +2,12 @@ package com.amit.coursemanagement.controller;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.verify;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.when;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -41,6 +43,15 @@ public class CourseControllerTest {
 				.hasFieldOrPropertyWithValue("instructor", "John Doe").hasFieldOrPropertyWithValue("ratings", 4.5)
 				.hasFieldOrPropertyWithValue("price", 49.99);
 
+	}
+	@Test
+	void shouldReturnListOfCourseDtoWhenGetCoursesByNameCalled() {
+		List<CourseDto> courseDtos = new ArrayList<>();
+		courseDtos.add(getDummyCourseDto());
+		when(courseService.getCoursesByName(anyString())).thenReturn(courseDtos);
+		 ResponseEntity<List<CourseDto>> courses = courseController.getCoursesByName("Java Basics");
+		 assertThat(courses.getBody()).isNotNull();
+		 assertThat(courses.getBody().size()).isEqualTo(1);
 	}
 
 	@Test
