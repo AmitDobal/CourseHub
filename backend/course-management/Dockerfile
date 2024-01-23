@@ -3,6 +3,6 @@ COPY . .
 RUN mvn clean install -DskipTests
 
 FROM openjdk:17.0.1-jdk-slim
-COPY --from=build /target/course-management-0.0.1-SNAPSHOT course.jar
+COPY --from=build /target/course-management-0.0.1-SNAPSHOT.jar course.jar
 EXPOSE 8080
 ENTRYPOINT [ "java", "-jar","course.jar" ]
