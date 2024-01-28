@@ -17,7 +17,7 @@ const CourseListItem = ({ course }) => {
   return (
     <Box mb={2}>
       <Paper elevation={2} sx={useStyles.courseListItemPaper} >
-        <Avatar sx={useStyles.courseImage} variant="square">{course.id}</Avatar>
+        <Avatar sx={useStyles.courseImage} variant="square"><img src={course.image} width={'100%'} height={'100%'} alt={course.name} /></Avatar>
         <Box ml={1}>
           <Typography variant="h5">{course.name}</Typography>
           <Typography >{course.description}</Typography>

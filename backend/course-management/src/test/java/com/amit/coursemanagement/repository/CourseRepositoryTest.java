@@ -23,7 +23,7 @@ public class CourseRepositoryTest {
 	void shouldAbleToFetchAllBooksInDB() {
 		Iterable<Course> all = courseRepository.findAll();
 		Long totalCourseCount = StreamSupport.stream(all.spliterator(), false).count();
-		Assertions.assertEquals(2, totalCourseCount);
+		Assertions.assertEquals(12, totalCourseCount);
 	}
 	
 	@Test

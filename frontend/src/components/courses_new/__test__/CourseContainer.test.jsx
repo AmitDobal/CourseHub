@@ -2,7 +2,7 @@ import React from "react";
 import renderWithRedux from "../../../util/testUtil";
 import CourseContainer from "../CourseContainer";
 import CourseList from "../CourseList";
-import getCourseAction from "../../../module/course/courseAction.js";
+import {getCourseAction} from "../../../module/course/courseAction.js";
 import {
   COURSE_LIST_ACTION_TYPE,
   COURSE_LIST_ERROR_ACTION_TYPE,

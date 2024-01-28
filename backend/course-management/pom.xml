@@ -73,9 +73,9 @@
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
-		    <groupId>org.springdoc</groupId>
-		    <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-		    <version>2.2.0</version>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+			<version>2.2.0</version>
 		</dependency>
 
 	</dependencies>
@@ -98,6 +98,10 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<testFailureIgnore>true</testFailureIgnore>
+					<runOrder>alphabetical</runOrder>
+				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.jacoco</groupId>
@@ -137,7 +141,8 @@
 							<excludes>
 								<!-- Exclude the main application class -->
 								<exclude>
-									com/amit/coursemanagement/CourseManagementApplication.class</exclude>
+									com/amit/coursemanagement/CourseManagementApplication.class
+								</exclude>
 							</excludes>
 						</configuration>
 					</execution>

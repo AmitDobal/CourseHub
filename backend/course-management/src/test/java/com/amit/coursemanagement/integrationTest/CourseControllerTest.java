@@ -11,13 +11,17 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.annotation.DirtiesContext.ClassMode;
+import org.springframework.test.annotation.DirtiesContext.MethodMode;
 import org.springframework.test.context.jdbc.Sql;
 
 import com.amit.coursemanagement.CourseManagementApplication;
+import com.amit.coursemanagement.dto.CourseDto;
 import com.amit.coursemanagement.entity.Course;
 
+import jakarta.transaction.Transactional;
+
 @SpringBootTest(classes = CourseManagementApplication.class, webEnvironment = WebEnvironment.RANDOM_PORT)
-@DirtiesContext(classMode = ClassMode.AFTER_EACH_TEST_METHOD)
+@DirtiesContext(classMode = ClassMode.BEFORE_EACH_TEST_METHOD )
 public class CourseControllerTest {
 
 	@LocalServerPort
@@ -29,8 +33,19 @@ public class CourseControllerTest {
 	@Test
 	@Sql(scripts = { "classpath:InsertInitialCourseRecordForTest.sql" })
 	void shouldReturnCourseWhenCourseApiCalled() {
-		Course[] courses = testRestTemplate.getForObject("http://localhost:" + port + "/api/v1/courses", Course[].class);
+		Course[] courses = testRestTemplate.getForObject("http://localhost:" + port + "/api/v1/courses",
+				Course[].class);
 		assertThat(courses).isNotNull();
-		assertThat(courses.length).isEqualTo(2);
+		assertThat(courses.length).isEqualTo(12);
+	}
+
+	@Test
+	@Sql(scripts = { "classpath:InsertInitialCourseRecordForTest.sql" })
+	void shouldReturnOneCourseWhenCalledWithTestName() {
+		CourseDto[] courseDtos = testRestTemplate
+				.getForObject("http://localhost:" + port + "/api/v1/courses/Java Fundamentals", CourseDto[].class);
+		assertThat(courseDtos).isNotNull();
+		assertThat(courseDtos.length).isEqualTo(1);
+
 	}
 }

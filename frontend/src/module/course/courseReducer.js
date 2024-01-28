@@ -1,4 +1,5 @@
 import {
+  COURSES_BY_NAME_ACTION_TYPE,
   COURSE_LIST_ACTION_TYPE,
   COURSE_LIST_ERROR_ACTION_TYPE,
   COURSE_LIST_FULFILLED_ACTION_TYPE,
@@ -17,6 +18,12 @@ export const INITIAL_COURSE_REDUCER_STATE = {
 export const courseReducer = (state = INITIAL_COURSE_REDUCER_STATE, action) => {
   switch (action.type) {
     case COURSE_LIST_ACTION_TYPE: {
+      return {
+        ...state,
+        courses: action.payload,
+      };
+    }
+    case COURSES_BY_NAME_ACTION_TYPE: {
       return {
         ...state,
         courses: action.payload,

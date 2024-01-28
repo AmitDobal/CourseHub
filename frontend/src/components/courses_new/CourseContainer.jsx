@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import CourseFilter from "./CourseFilter";
 import { useStyles } from "./CourseStyles";
 import { useDispatch, useSelector } from "react-redux";
-import getCourseAction from "../../module/course/courseAction.js";
+import {getCourseAction} from "../../module/course/courseAction.js";
 import {
   getCoursesSelector,
   getCoursePromiseSelector,

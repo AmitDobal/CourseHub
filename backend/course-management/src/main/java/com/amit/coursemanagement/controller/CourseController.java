@@ -87,7 +87,7 @@ public class CourseController {
 	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "Successfully retrived the course"),
 			@ApiResponse(responseCode = "403", description = "Accessing the resource you were trying to reach is forbidden"),
 			@ApiResponse(responseCode = "404", description = "Resource not found") })
-	@GetMapping("/course/{name}")
+	@GetMapping("/courses/{name}")
 	@ResponseStatus(HttpStatus.OK)
 	public ResponseEntity<List<CourseDto>> getCoursesByName(@PathVariable("name") String name) {
 		List<CourseDto> courses = courseService.getCoursesByName(name);
