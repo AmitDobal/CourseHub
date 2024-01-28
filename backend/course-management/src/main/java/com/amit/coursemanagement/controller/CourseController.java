@@ -27,7 +27,7 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.media.ExampleObject;
 
-@Tag(name = "Course API", description = "API for courses")
+@Tag(name = "Course API", description = "Courses API")
 @RestController
 @RequestMapping("api/v1")
 public class CourseController {
@@ -48,8 +48,8 @@ public class CourseController {
 		return courseService.getAllCourses();
 	}
 
-	@Operation(summary = "Add Courses", description = "Add list of courses")
-	@ApiResponses(value = { @ApiResponse(responseCode = "201", description = "Successfully added all the courses"),
+	@Operation(summary = "Add Course", description = "Add single courses")
+	@ApiResponses(value = { @ApiResponse(responseCode = "201", description = "Successfully added the course"),
 			@ApiResponse(responseCode = "403", description = "Accessing the resource you were trying to reach is forbidden"),
 			@ApiResponse(responseCode = "404", description = "Resource not found") })
 
@@ -66,6 +66,10 @@ public class CourseController {
 		}
 	}
 
+	@Operation(summary = "Add Courses", description = "Add list of courses")
+	@ApiResponses(value = { @ApiResponse(responseCode = "201", description = "Successfully added all the courses"),
+			@ApiResponse(responseCode = "403", description = "Accessing the resource you were trying to reach is forbidden"),
+			@ApiResponse(responseCode = "404", description = "Resource not found") })
 	@PostMapping("/courses")
 	@ResponseStatus(HttpStatus.CREATED)
 	public ResponseEntity<String> addCourses(@RequestBody List<CourseDto> courses) {
@@ -78,10 +82,15 @@ public class CourseController {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error in saving the courses data");
 		}
 	}
-	
+
+	@Operation(summary = "Find a course", description = "Find course by name")
+	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "Successfully retrived the course"),
+			@ApiResponse(responseCode = "403", description = "Accessing the resource you were trying to reach is forbidden"),
+			@ApiResponse(responseCode = "404", description = "Resource not found") })
 	@GetMapping("/course/{name}")
-	public ResponseEntity<List<CourseDto>> getCoursesByName(@PathVariable("name") String name ) {
-		List<CourseDto> courses= courseService.getCoursesByName(name);
+	@ResponseStatus(HttpStatus.OK)
+	public ResponseEntity<List<CourseDto>> getCoursesByName(@PathVariable("name") String name) {
+		List<CourseDto> courses = courseService.getCoursesByName(name);
 		return ResponseEntity.ok(courses);
 	}
 }
